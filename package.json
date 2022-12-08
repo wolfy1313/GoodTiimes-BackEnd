@@ -1,0 +1,32 @@
+{
+  "name": "goodtiimes-backend",
+  "version": "1.0.0",
+  "description": "Capstone Project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolfy1313/GoodTiimes-BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wolfy1313/GoodTiimes-BackEnd/issues"
+  },
+  "homepage": "https://github.com/wolfy1313/GoodTiimes-BackEnd#readme",
+  "dependencies": {
+    "@ngneat/falso": "^6.3.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.8.0",
+    "sequelize": "^6.26.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
