@@ -4,7 +4,7 @@
 const falso = require('@ngneat/falso')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    let users = [...Array(3)].map ((_) => ({
+    let users = [...Array(10)].map ((_) => ({
       name: falso.randFullName(),
       username: falso.randFirstName(),
       passwordDigest: '1234',

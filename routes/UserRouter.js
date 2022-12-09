@@ -9,4 +9,10 @@ router.get(
   controller.getUserById
 )
 
+router.get('/',
+// middleware.stripToken,
+// middleware.verifyToken, 
+controller.GetUsers)
+
+
 module.exports = router
