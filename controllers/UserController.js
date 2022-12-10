@@ -11,6 +11,18 @@ const getUserById = async(req,res) => {
   }
 }
 
+const GetUserByIdWithEvents = async (req, res) => {
+  try {
+    const userEvents = await User.findByPk(req.params.user_id, {
+      include: {model: Venue, through: Event, as:'user_event'}
+    })
+    res.send(userEvents)
+  } catch (error) {
+    throw error
+  }
+}
+
+
 const GetUsers = async (req,res) => {
   try {
     const users = await User.findAll()
@@ -23,5 +35,6 @@ const GetUsers = async (req,res) => {
 
 module.exports = {
   getUserById,
+  GetUserByIdWithEvents,
   GetUsers
 }

@@ -10,16 +10,6 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Event.belongsTo(models.User, {
-        foreignKey: 'user_id',
-        as: 'user_event',
-        onDelete: 'CASCADE'
-      })
-      Event.belongsTo(models.Venue, {
-        foreignKey: 'venue_id',
-        as: 'venue_reviews',
-        onDelete: 'CASCADE'
-      })
     }
   }
   Event.init({

@@ -6,13 +6,14 @@ router.get(
   '/:user_id',
   // middleware.stripToken,
   // middleware.verifyToken,
-  controller.getUserById
+  controller.GetUserByIdWithEvents
 )
 
 router.get('/',
 // middleware.stripToken,
 // middleware.verifyToken, 
 controller.GetUsers)
+
 
 
 module.exports = router

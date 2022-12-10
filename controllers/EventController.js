@@ -9,15 +9,6 @@ const GetAllEvents = async (req, res) => {
   }
 }
 
-// const GetEventById = async (req, res) => {
-//   try {
-//     const event = await Event.findByPk(req.params.event_id)
-//     res.send(event)
-//   } catch (error) {
-//     throw error
-//   }
-// }
-
 const GetEventsByUserId = async (req, res) => {
   try {
     const events = await Event.findAll({
