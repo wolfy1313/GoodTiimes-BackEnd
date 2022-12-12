@@ -2,7 +2,12 @@ const { Venue, User, Review, Event } = require('../models')
 
 const GetVenues = async (req,res) => {
   try {
-    const venues = await Venue.findAll()
+    const venues = await Venue.findAll({
+      include: [
+        {model: User, through: Review, as: 'venue_reviews'},
+        {model: User, through: Event, as:'venue_event'}
+      ]
+    })
     res.send(venues)
   } catch (error) {
     throw error
