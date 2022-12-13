@@ -1,4 +1,4 @@
-const { User, Venue, Review, Event } = require('../models')
+const { User, Party, Comment, User_Party } = require('../models')
 
 const getUserById = async(req,res) => {
   try {
@@ -11,12 +11,12 @@ const getUserById = async(req,res) => {
   }
 }
 
-const GetUserByIdWithEvents = async (req, res) => {
+const GetUserByIdWithUser_Parties = async (req, res) => {
   try {
-    const userEvents = await User.findByPk(req.params.user_id, {
-      include: {model: Venue, through: Event, as:'user_event'}
+    const userUser_Parties = await User.findByPk(req.params.user_id, {
+      include: {model: Party, through: User_Party, as:'user_party'}
     })
-    res.send(userEvents)
+    res.send(userParties)
   } catch (error) {
     throw error
   }
@@ -35,6 +35,6 @@ const GetUsers = async (req,res) => {
 
 module.exports = {
   getUserById,
-  GetUserByIdWithEvents,
+  GetUserByIdWithUser_Parties,
   GetUsers
 }

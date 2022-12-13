@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Review extends Model {
+  class User_Party extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
     }
   }
-  Review.init({
+  User_Party.init({
     user_id: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',
@@ -21,20 +21,20 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
     },
-    venue_id: {
+    party_id: {
       type: DataTypes.INTEGER,
       onDelete: 'CASCADE',
       references: {
-        model: 'venues',
+        model: 'parties',
         key: 'id'
       }
     },
     title: DataTypes.STRING,
-    review: DataTypes.STRING
+    description: DataTypes.STRING
   }, {
     sequelize,
-    modelName: 'Review',
-    tableName: 'reviews'
+    modelName: 'User_Party',
+    tableName: 'user_parties'
   });
-  return Review;
+  return User_Party;
 };

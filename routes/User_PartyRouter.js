@@ -1,25 +1,25 @@
 const router = require('express').Router()
 const middleware = require('../middleware')
-const controller = require('../controllers/EventController')
+const controller = require('../controllers/User_PartyController')
 
-router.get('/', controller.GetAllEvents)
-router.get('/venue/:venue_id', controller.GetEventsByVenueId)
-router.get('/user/:user_id', controller.GetEventsByUserId)
+router.get('/', controller.GetAllUser_Parties)
+router.get('/party/:party_id', controller.GetUser_PartiesByPartyId)
+router.get('/user/:user_id', controller.GetUser_PartiesByUserId)
 
 router.post('/',
 // middleware.stripToken,
 // middleware.verifyToken, 
-controller.CreateEvent)
+controller.CreateUser_Party)
 
 router.put('/update/',
 // middleware.stripToken,
 // middleware.verifyToken, 
-controller.UpdateEvent)
+controller.UpdateUser_Party)
 
 router.delete('/delete',
 // middleware.stripToken,
 // middleware.verifyToken, 
-controller.DeleteEvent)
+controller.DeleteUser_Party)
 
 
 module.exports = router

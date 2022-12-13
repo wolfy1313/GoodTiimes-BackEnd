@@ -4,17 +4,19 @@
 const falso = require('@ngneat/falso')
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    let venues = [...Array(10)].map ((_) => ({
+    let parties = [...Array(10)].map ((_) => ({
       name: falso.randFullName(),
-      address: falso.randFirstName(),
-      image: falso.randUrl(),
+      address: falso.randStreetAddress(),
+      date: falso.randWeekday(),
+      time: falso.randNumber({ min: 2, max:11 }),
+      image: "image placeholder",
       createdAt: new Date(),
       updatedAt: new Date()
     }))
-    await queryInterface.bulkInsert('venues', venues)
+    await queryInterface.bulkInsert('parties', parties)
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('venues')
+    await queryInterface.bulkDelete('parties')
   }
 };

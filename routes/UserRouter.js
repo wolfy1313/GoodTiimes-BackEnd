@@ -6,7 +6,7 @@ router.get(
   '/:user_id',
   // middleware.stripToken,
   // middleware.verifyToken,
-  controller.GetUserByIdWithEvents
+  controller.GetUserByIdWithUser_Parties
 )
 
 router.get('/',

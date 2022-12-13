@@ -10,16 +10,27 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.belongsToMany(models.Venue, {
-        as: 'reviewer',
-        through: models.Review,
-        foreignKey: 'venue_id'
+      // user has many reviews
+
+      // User.belongsToMany(models.Venue, {
+      //   as: 'reviewer',
+      //   // through: models.Review,
+      //   foreignKey: 'user_id',
+      //   onDelete: 'cascade',
+      //   onUpdate: 'cascade'
+      // })
+      User.hasMany(models.Comment, {
+        foreignKey: 'user_id'
       })
-      User.belongsToMany(models.Venue, {
-        as: 'user_event',
-        through: models.Event,
-        foreignKey: 'venue_id'
-      })
+
+
+      User.belongsToMany(models.Party, {
+        as: 'user_party',
+        through: models.User_Party,
+        foreignKey: 'user_id',
+          onDelete: 'cascade',
+          onUpdate: 'cascade'
+        })
     }
   }
   User.init(
