@@ -28,9 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         model: 'parties',
         key: 'id'
       }
-    },
-    title: DataTypes.STRING,
-    description: DataTypes.STRING
+    }
   }, {
     sequelize,
     modelName: 'User_Party',

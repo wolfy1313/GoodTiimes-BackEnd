@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
       User.belongsToMany(models.Party, {
-        as: 'user_party',
+        as: 'party_user',
         through: models.User_Party,
         foreignKey: 'user_id',
           onDelete: 'cascade',

@@ -16,7 +16,7 @@ router.put('/update',
 // middleware.verifyToken,
 controller.UpdateComment)
 
-router.delete('/delete',
+router.delete('/delete/:comment_id',
 // middleware.stripToken,
 // middleware.verifyToken, 
 controller.DeleteComment)

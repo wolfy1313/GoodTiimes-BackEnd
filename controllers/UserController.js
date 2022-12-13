@@ -14,9 +14,9 @@ const getUserById = async(req,res) => {
 const GetUserByIdWithUser_Parties = async (req, res) => {
   try {
     const userUser_Parties = await User.findByPk(req.params.user_id, {
-      include: {model: Party, through: User_Party, as:'user_party'}
+      include: {model: Party, through: User_Party, as:'party_user'}
     })
-    res.send(userParties)
+    res.send(userUser_Parties)
   } catch (error) {
     throw error
   }
