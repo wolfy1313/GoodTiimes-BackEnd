@@ -15,6 +15,9 @@ module.exports = {
       party_id: {
         type: Sequelize.INTEGER
       },
+      username: {
+        type: Sequelize.STRING
+      },
       comment: {
         type: Sequelize.STRING
       },

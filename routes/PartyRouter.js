@@ -3,6 +3,7 @@ const controller = require('../controllers/PartyController')
 const middleware = require('../middleware')
 
 router.get('/', controller.GetParties)
+router.get('/party/:party_id', controller.GetPartyById)
 
 
 router.post('/',
@@ -11,7 +12,12 @@ router.post('/',
 controller.CreateParty)
 
 
-router.get('/:party_id', controller.GetPartyByIdWithUser_Parties)
+router.get('/:party_id', controller.GetPartyWithComments)
+
+router.get('/user/:party_id',
+// middleware.stripToken,
+// middleware.verifyToken, 
+controller.GetPartyWithCommentsAndUser)
 
 
 router.put('/update/:party_id', 

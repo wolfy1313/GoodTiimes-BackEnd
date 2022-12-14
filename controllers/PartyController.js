@@ -14,18 +14,56 @@ const GetParties = async (req,res) => {
   }
 }
 
-const GetPartyByIdWithUser_Parties = async (req,res) => {
+const GetPartyByIdWithUsers = async (req,res) => {
   try {
-    // let venue_id = parseInt(req.params.venue_id)
     const party = await Party.findAll({where: {id: req.params.party_id}, 
       include: [
         {model: User, through: User_Party, as:'party_user'}
-        // {model: User, through: { attributes: ['description']}, as: 'venue_event'},
-        // {model: User, through: Review, as:'venue_reviews'}
       ]
     })
     res.send(party)
   } catch (error){
+    throw error
+  }
+}
+
+const GetPartyById = async (req,res) => {
+  try{
+    const party = await Party.findByPk(
+      req.params.party_id
+    )
+    res.send(party)
+  } catch(error) {
+    throw error
+  }
+}
+
+const GetPartyWithComments = async (req,res) => {
+  try { 
+    const party = await Party.findAll(
+      { where: {id: req.params.party_id},
+      include: 
+        Comment,
+        raw: true,
+        nest: true
+      })
+      res.send(party)
+  } catch (error) {
+    throw error
+  }
+}
+const GetPartyWithCommentsAndUser = async (req,res) => {
+  try { 
+    const party = await Party.findAll(
+      { where: {id: req.params.party_id},
+      include: [
+        {model: Comment,
+        raw: true,
+        nest: true},
+        {model: User, through:User_Party, as:'party_user',raw:true, nest:true}
+  ]})
+      res.send(party)
+  } catch (error) {
     throw error
   }
 }
@@ -63,8 +101,11 @@ const DeleteParty = async (req, res) => {
 
 module.exports = {
   GetParties,
-  GetPartyByIdWithUser_Parties,
+  GetPartyByIdWithUsers,
+  GetPartyWithComments,
   CreateParty,
   UpdateParty,
-  DeleteParty
+  DeleteParty,
+  GetPartyWithCommentsAndUser,
+  GetPartyById
 }

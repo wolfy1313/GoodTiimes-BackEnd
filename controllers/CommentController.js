@@ -9,6 +9,17 @@ const GetComments = async (req, res) => {
   }
 }
 
+const GetCommentById = async (req, res) => {
+  try {
+    const comment = await Comment.findByPk(
+      req.params.comment_id
+    )
+    res.send(comment)
+  } catch (error) {
+    throw error
+  }
+}
+
 const GetCommentsByUser = async (req, res) => {
   try {
     const comments = await Comment.findAll({
@@ -68,5 +79,6 @@ module.exports = {
   GetCommentsByParty,
   CreateComment,
   UpdateComment,
-  DeleteComment
+  DeleteComment,
+  GetCommentById
 }
