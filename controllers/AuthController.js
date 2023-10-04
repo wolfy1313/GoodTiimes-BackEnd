@@ -54,9 +54,11 @@ const Register = async (req, res) => {
 
 const UpdatePassword = async (req, res) => {
   try {
+    // Find the user by username
     const user = await User.findOne({
       where: { username: req.body.username }
     })
+    // Check if the user exists and if the old password matches
     if (
       user &&
       (await middleware.comparePassword(
@@ -64,10 +66,13 @@ const UpdatePassword = async (req, res) => {
         req.body.oldPassword
       ))
     ) {
+       // Hash the new password and update it in the database
       let passwordDigest = await middleware.hashPassword(req.body.newPassword)
       await user.update({ passwordDigest })
+      // Respond with a success message
       return res.send({ status: 'Success', msg: 'Password updated' })
     }
+    // If authentication fails, send a 401 Unauthorized response
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
   } catch (error) {
     throw error
